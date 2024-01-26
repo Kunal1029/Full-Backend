@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>user</title>
+  </head>
+  <body>
+    <h1>BELOW are data of All Users</h1>
+    <div>
+      <table>
+        <tr>
+          <th>Num</th>
+          <th>id</th>
+          <th>username</th>
+          <!-- <th>email</th> -->
+          <th>Password</th>
+        </tr>
+        <% for(let i = 0;i<5;i++) { %>
+        <tr>
+          <td><%= i %></td>
+          <td><%= k[i].id %></td>
+          <td><%= k[i].username %></td>
+          <!-- <td></td> -->
+          <td><%= k[i].password %></td>
+          <td>
+            <form method="GET" action="/user/<%=k[i].id%>/edit">
+              <button>EDIT</button>
+            </form>
+          </td>
+        </tr>
+
+        <%}%>
+      </table>
+    </div>
+  </body>
+</html>
