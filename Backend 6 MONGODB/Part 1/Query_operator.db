@@ -1,0 +1,19 @@
+case sensitive
+
+$gt - greater than
+db.collection.find({marks:{$gt:75}})
+ db.AC.find({marks : {$lt: 80}})
+
+$lte - less than equal
+ db.AC.find({marks : {$lte: 80}})
+
+db.AC.find({marks: {$in: [77 , 67]}})
+
+
+$or
+db.AC.find({$or:[{marks:{$gt:75}}, {age:{$lt: 23}}]}) 
+
+$and 
+db.AC.find({$and:[{marks:{$gt:75}}, {age:{$lt: 23}}]})
+
+

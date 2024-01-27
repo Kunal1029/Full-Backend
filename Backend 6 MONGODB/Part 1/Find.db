@@ -1,0 +1,10 @@
+db.collection.find() // returns everything
+
+for specific queries
+db.collection.find({key:value}) // return cussor(reference to original) or in form of array
+db.collection.findOne({key:value}) // return actual document
+
+db.AC.find({city:"Delhi"})
+db.AC.find({city:"Delhi", marks:77})
+db.AC.findOne({city:"Delhi"})
+

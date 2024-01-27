@@ -1,0 +1,26 @@
+//Update in db
+
+//update operators
+
+$addFields
+$set
+$project
+$unset
+$replaceRoot
+$replaceWith
+// or go to "updates with aggregation pipeline" in mongodb.com
+
+
+updateone
+
+db.collection.updateOne()
+//update at most a single docu. that match a spcified filter even through multiple docu. may match the specified filter.
+
+db.collection.updateOne(<filter, <update> , <options>)
+db.AC.updateOne({name:"adam"}, {$set : {marks:99}})
+
+
+//update many
+ db.AC.updateMany({name:"KL Rahl"}, {$set:{city:"Lal Kila"}})
+
+ 

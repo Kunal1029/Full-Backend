@@ -1,0 +1,9 @@
+db.AC.deleteOne({name:"Suresh"})
+
+ db.AC.deleteMany({marks:{$gt: 80}})
+
+//delete all collections
+ db.AC.deleteMany({})
+
+ //delete database
+ 

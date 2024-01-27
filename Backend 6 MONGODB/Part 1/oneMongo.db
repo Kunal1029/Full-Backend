@@ -1,0 +1,31 @@
+//insert single document into a collection
+
+db.collection.insertOne()
+
+show collections
+
+db.student.insertOne({name:"adam" , marks:79})
+db.student.find()
+
+if a collection does not exist, Mongodb create the collection when u first stores data for that collections
+
+use AC
+db.AC.insertOne({name: "adam" , age: 19 , marks: 88})
+
+//mongo return below
+{
+  acknowledged: true,
+  insertedId: ObjectId('65b3d5fc78a89199134aa203')
+  //this id always a PRIMARY KEY
+}
+
+db.AC.find() // return collection document in form of array
+
+we can add different column in same collection
+ db.AC.insertOne({name: "bdam" , age: 29 , marks: 98 , city: "Gwalior"})
+
+
+//For inserting multiple data at one time
+
+db.AC.insertMany([{name: "Farin", marks: 77, age: 23},{name: "Rahul" , marks: 99,age:22}])
+

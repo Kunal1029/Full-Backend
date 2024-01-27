@@ -1,0 +1,17 @@
+db.AC.insertOne({name:"Suresh"} , {performance:{marks:50,grade: 'A'}})
+db.AC.insertOne({name:"Ramesh" , performance:{marks:40,grade: 'B'}})
+[
+  {
+    _id: ObjectId('65b4049278a89199134aa20f'),
+    name: 'Ramesh',
+    performance: { marks: 40, grade: 'B' }
+  }
+]
+AC> db.AC.find( {"performance.grade" : 'B' } )
+[
+  {
+    _id: ObjectId('65b4049278a89199134aa20f'),
+    name: 'Ramesh',
+    performance: { marks: 40, grade: 'B' }
+  }
+]
