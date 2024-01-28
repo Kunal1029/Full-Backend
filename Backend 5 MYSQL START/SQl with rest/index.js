@@ -90,20 +90,20 @@ app.patch("/user/:id", (req, res) => {
     connection.query(q3, (err, updte) => {
       if (err) throw err;
       let user = updte[0];
-    //   console.log(user.password);
-    //   console.log(formPass)
-    //   console.log(newUser)
-    //   res.send("Db pass ", user.password , " fompass " , formPass , " newU " , newUser)
+      //   console.log(user.password);
+      //   console.log(formPass)
+      //   console.log(newUser)
+      //   res.send("Db pass ", user.password , " fompass " , formPass , " newU " , newUser)
       if (formPass != user.password) {
         res.send("Wrong Password");
       } else {
         let Qupdate = `UPDATE user SET username= ? WHERE id= ?`;
         let values = [newUser, id];
         // let Qupdate = `UPDATE user SET username = '${newUser}' WHERE id = '${id}'`;
-        try {                                                                      	
+        try {
           connection.query(Qupdate, values, (err, newUp) => {
-            if(err) throw err;
-            res.redirect('/user');
+            if (err) throw err;
+            res.redirect("/user");
             // console.log(newUp)
           });
         } catch (err) {
@@ -114,6 +114,75 @@ app.patch("/user/:id", (req, res) => {
   } catch (error) {
     console.log(err);
   }
+});
+
+// view route
+app.get("/user/:id/view", (req, res) => {
+  let { id } = req.params;
+  let qv = `SELECT * FROM user WHERE id='${id}'`;
+  try {
+    connection.query(qv, (err, vw) => {
+      if (err) throw err;
+      let v = vw[0];
+      res.render("view.ejs", { v });
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//delete route
+app.delete("/user/:id", (req, res) => {
+  let { id } = req.params;
+  let qd = `DELETE FROM user WHERE id='${id}'`;
+  try {
+    connection.query(qd, (error, result) => {
+      if (error) throw error;
+      console.log(result);
+      res.redirect("/user");
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//add route
+app.get("/user/add", (req, res) => {
+  res.render("new.ejs");
+});
+
+// app.post("/user/newuser",(req,res)=>{
+//   let { id,username,email,password } = req.body;
+//   let value = [id,username,email,password];
+//   console.log(value)
+//   let newU = `INSERT INTO user (id , username , email , password) VALUES ?`;
+//   try {
+//     connection.query(newU,[value],(err,result)=>{
+//       if(err) throw err;
+//       console.log(result)
+//       res.redirect("/user");
+//     })
+//   } catch (err) {
+//     console.log(err)
+//   }
+
+// })
+app.post("/user/newuser", (req, res) => {
+  let { id, username, email, password } = req.body;
+  let values = [[id, username, email, password]];
+  console.log(values);
+
+  let newU = `INSERT INTO user (id, username, email, password) VALUES ?`;
+
+  connection.query(newU, [values], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Error inserting user into the database");
+    }
+
+    console.log(result);
+    res.redirect("/user"); // Assuming you have a route defined for "/user"
+  });
 });
 
 app.listen(port, () => {
