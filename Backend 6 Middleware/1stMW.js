@@ -5,9 +5,16 @@
 const express = require("express");
 const app = express();
 
-app.use((req,res)=>{
+app.use((req,res , next)=>{
     console.log("I am MW");
-    res.send("MW finished")
+    // res.send("MW finished")
+    next();
+})
+
+app.use((req,res , next)=>{
+    console.log("I am 2nd MW");
+    // res.send("MW finished")
+    next();
 })
 
 app.get("/",(req,res)=>{
@@ -21,3 +28,4 @@ app.get("/random",(req,res)=>{
 app.listen(8080, ()=>{
     console.log("Server 8080 chalu")
 })
+

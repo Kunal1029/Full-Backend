@@ -4,7 +4,13 @@ Request -----> MIDDLEWARE ------> Response
 
 In express - MW in express that comes into play after server receive the request and before the response is sent to client.
 
-- They can do two things like one is send response or can pass control to another MW / operations. If no one is not done then link will stuck , and if send response then don't allow any other operations to perform ,not even different routes
+- They can do two things like one is send response or can pass control to another MW / operations. If no one is not done then link will stuck , and if send response then don't allow any other operations to perform ,not even different routes but we can use "next" for useing MW with also other routes like below.
+
+app.use((req,res , next)=>{
+    console.log("I am MW");
+    // res.send("MW finished")
+    next();
+})
 
 - They can access res,req objects
 - Chaining is possible. means one mw func can pass the control to another mw func. 

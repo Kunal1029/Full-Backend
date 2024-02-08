@@ -2,7 +2,7 @@
   "name": "backend-6-middleware",
   "version": "1.0.0",
   "description": "Request -----> MIDDLEWARE ------> Response",
-  "main": "1stMW.js",
+  "main": "AccessToken.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
